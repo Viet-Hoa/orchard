@@ -1,8 +1,0 @@
-﻿Name: AA.WebShop
-AntiForgery: enabled
-Author: Nhom2
-Website: http://orchardproject.net
-Version: 1.0
-OrchardVersion: 1.10.2
-Description: Orchard Webshop Module Demo
-Category: Webshop
