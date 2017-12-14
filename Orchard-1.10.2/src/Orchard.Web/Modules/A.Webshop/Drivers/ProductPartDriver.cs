@@ -10,6 +10,14 @@ namespace A.Webshop.Drivers
             get { return "Product"; }
         }
 
+        protected override DriverResult Display(ProductPart part, string displayType, dynamic shapeHelper)
+        {
+            return ContentShape("Parts_Product", () => shapeHelper.Parts_Product(
+                    Price: part.UnitPrice,
+                    Sku: part.Sku
+                ));
+        }
+
         protected override DriverResult Editor(ProductPart part, dynamic shapeHelper) {
             return ContentShape("Parts_Product_Edit", () => shapeHelper
                 .EditorTemplate(TemplateName: "Parts/Product", Model: part, Prefix: Prefix));

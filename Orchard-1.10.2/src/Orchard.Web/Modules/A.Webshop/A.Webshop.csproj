@@ -108,6 +108,14 @@
       <Project>{9916839c-39fc-4ceb-a5af-89ca7e87119f}</Project>
       <Name>Orchard.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Orchard.Forms\Orchard.Forms.csproj">
+      <Project>{642a49d7-8752-4177-80d6-bfbbcfad3de0}</Project>
+      <Name>Orchard.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Orchard.Projections\Orchard.Projections.csproj">
+      <Project>{5531e894-d259-45a3-aa61-26dbe720c1ce}</Project>
+      <Name>Orchard.Projections</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config">
@@ -119,6 +127,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Drivers\ProductPartDriver.cs" />
+    <Compile Include="Filters\ContentPartsFilter.cs" />
+    <Compile Include="Filters\ContentPartsFilterForms.cs" />
+    <Compile Include="Filters\ProductPartFilter.cs" />
     <Compile Include="Handlers\ProductPartHandler.cs" />
     <Compile Include="Migrations.cs" />
     <Compile Include="Models\ProductPart.cs" />
@@ -131,6 +142,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Placement.info" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts\Product.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
