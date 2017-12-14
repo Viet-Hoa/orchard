@@ -47,6 +47,12 @@ namespace A.Webshop.Services
             }
         }
 
+        public void AddRange(IEnumerable<ShoppingCartItem> items) {
+            foreach (var item in items) {
+                Add(item.ProductId, item.Quantity);
+            }
+        }
+
         public void Remove(int productId) {
             var item = Items.SingleOrDefault(x => x.ProductId == productId);
 
@@ -58,6 +64,26 @@ namespace A.Webshop.Services
 
         public ProductPart GetProduct(int productId) {
             return _contentManager.Get<ProductPart>(productId);
+        }
+
+        public IEnumerable<ProductQuantity> GetProducts()
+        {
+            // Get a list of all product IDs from the shopping cart
+            var ids = Items.Select(x => x.ProductId).ToList();
+
+            // Load all product parts by the list of IDs
+            var productParts = _contentManager.GetMany<ProductPart>(ids, VersionOptions.Latest, QueryHints.Empty).ToArray();
+
+            // Create a LINQ query that projects all items in the shoppingcart into shapes
+            var query = from item in Items
+                        from productPart in productParts
+                        where productPart.Id == item.ProductId
+                        select new ProductQuantity {
+                            ProductPart = productPart,
+                            Quantity = item.Quantity
+                        };
+
+            return query;
         }
 
         public void UpdateItems() {
@@ -80,10 +106,11 @@ namespace A.Webshop.Services
             return Items.Sum(x => x.Quantity);
         }
 
-        private void Clear() {
+        public void Clear() {
             ItemsInternal.Clear();
             UpdateItems();
         }
 
+        
     }
 }

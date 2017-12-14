@@ -1,0 +1,14 @@
+Name: AIM LinqJs
+AntiForgery: enabled
+Author: neuecc (Modularized by AIM Productions)
+Website: http://aimorchard.codeplex.com/
+Version: 2.2.0.2
+OrchardVersion: 1.4
+Description: Linq For Javascript library. See http://linqjs.codeplex.com/ for more information.
+Category: Developer
+Features:
+    AIM.LinqJs.jQuery:
+        Name: AIM LinqJs jQuery support
+        Description: jQuery edition of the Linq For Javascript library. Also enables the use of the jQuery binding extension.
+        Dependencies: Orchard.jQuery, AIM.LinqJs
+        Category: Developer
